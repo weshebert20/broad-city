@@ -1,0 +1,133 @@
+
+/*landing page gif sizing and container background*/
+#broadCityGif {
+	display: block;
+    margin: -30px auto;
+    width: 50%;
+}
+
+#containerLanding {
+	background-color: black;
+	height: 100%;
+}
+
+html.charPick {
+    /*If you had a black or close to black background*/
+    background-color: #000000;
+}
+
+/*universal styles for landing p/individual tyles for each*/
+p.landing {
+	color: white;
+	text-align: center;
+	margin-top: 0;
+}
+
+.presents {
+	font-family: 'Six Caps', sans-serif;
+	font-size: 25px;
+}
+
+.gameName {
+	font-family: 'Londrina Outline', cursive;
+	font-size: 65px;
+	margin-bottom: 35px;
+}
+
+/*button styles for landing page*/
+.playButton {
+	margin-left: 43%;
+	padding: 8px 40px;
+	border-radius: 10px;
+	border: 2px solid #FFE83B;
+	background-color: #189BCC;
+	font-family: 'Six Caps', sans-serif;
+	font-size: 30px;
+	color: white;
+}
+
+.playButton:hover {
+    background-color: #FFE83B; 
+    color: #189BCC;
+    cursor: pointer;
+}
+
+/*pick a character page*/
+
+.charPick { 
+  background: url(img/charPick.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.abbi {
+	display: inline-block;
+	width: 49%;
+	height: 800px;
+	float: left;
+	text-align: center;
+}
+
+.ilana {
+	display: inline-block;
+	width: 49%;
+	height: 900px;
+	float: right;
+	text-align: center;
+}
+
+.playerAbbi {
+	font-size: 80px;
+	font-family: 'Londrina Solid', cursive;
+	color: white;
+	margin-top: 90%;
+}
+
+.playerIlana {
+	font-size: 80px;
+	font-family: 'Londrina Solid', cursive;
+	color: white;
+	margin-top: 5%;
+}
+
+.gotIt {
+	position: fixed;
+	top: 40%;
+	margin-left: -75px;
+	padding: 50px 60px;
+	border-radius: 10px;
+	border: 2px solid #FFE83B;
+	background-color: #FF6E75;
+	font-family: 'Six Caps', sans-serif;
+	font-size: 40px;
+	color: white;
+}
+
+.gotIt:hover {
+    background-color: #21274B; 
+    color: #FFE83B;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
