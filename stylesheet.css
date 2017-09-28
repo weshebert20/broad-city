@@ -11,7 +11,7 @@
 	height: 100%;
 }
 
-/*universal styles for landing p/individual tyles for each*/
+/*universal styles for landing p/individual styles for each*/
 p.landing {
 	color: white;
 	text-align: center;
@@ -131,7 +131,45 @@ p.landing {
 	position: absolute;
     top: 16%; right: 75%; bottom: 0; left: 0;
 	background-color: #19AE50;
+}
 
+.instruction {
+	font-size: 50px;
+	margin-bottom: 0;
+	text-align: center;
+	font-family: 'Londrina Solid', cursive;
+	color: #FFE83B;
+}
+
+.instructionParagraph {
+	font-family: 'Londrina Solid', cursive;
+	text-align: center;
+	font-size: 20px;
+
+}
+
+.players {
+	font-family: 'Londrina Solid', cursive;
+	margin-left: 3%;
+	font-size: 40px;
+	color: #FD767B;
+	display: inline-block;
+	margin: 10px;
+}
+
+.scorecard {
+	display: block;
+}
+
+.score {
+	display: inline-block;
+	font-family: 'Londrina Solid', cursive;
+	font-size: 40px;
+	margin: 0;
+}
+
+.reset {
+	display: inline-block;
 }
 
 /*game container and cards*/
@@ -149,7 +187,22 @@ p.landing {
 	display: inline-block;
 }
 
+.reset {
+	border-radius: 10px;
+	padding: 10px 50px;
+	border: 2px solid #FFE83B;
+	background-color: #189BCC;
+	font-family: 'Six Caps', sans-serif;
+	font-size: 30px;
+	color: white;
+	margin-left: 28%;
+}
 
+.reset:hover {
+    background-color: #FFE83B; 
+    color: #189BCC;
+    cursor: pointer;
+}
 
 
 

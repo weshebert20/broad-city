@@ -1,7 +1,8 @@
 $(document).ready(function() {
-    var memory = [];
-    var numClicked = 0;
+    var clicks = 0;
     var cardsPlayed = [];
+    var cardsWon = [];
+    var theme = cardsPlayed;
     // var cards = $('.cards');
     var cards = [
         {
@@ -87,10 +88,15 @@ $(document).ready(function() {
     };
 
     createBoard();
+    
+    var playerOne = function(){
+        $(".abbiScore").html('1');
+    };
 
-    var cardTheme = $('img.cards').each(function(i){
-       var cardTheme =  $(this).attr("theme");
-    });
+    var playerTwo = function(){
+        $(".ilanaScore").html('1');
+    };
+
 
 
     // flip card 
@@ -103,24 +109,34 @@ $(document).ready(function() {
     var cardImg = function(){
         var cardClikedTwo = $(this).attr('src', cards[this.id].images);
         cardsPlayed.push(cards[this.id].theme);
-        // console.log(cardClikedTwo);
-        if(cardsPlayed.length === 2){
-            checkForMatch();
-        }
+        var themes = $(cardClikedTwo).attr('theme');
+        // cardsWon.push(cards[this.id].theme);
+             if(cardsPlayed.length === 2){
+                 if (themes===themes){
+                playerOne();  
+                } else {
+                console.log("lost");
+                }
+                }
+            else if (cardsPlayed.length===4){
+                if (themes===themes){
+                    playerTwo();
+                } else {
+                console.log("lost");
+                }
+                }   
+            else if (cardsPlayed.length===6){
+                if (themes===themes){
+                    playerOne();
+                } else {
+                console.log("lost");
+                }
+                }
+        console.log(themes);
     };
+
     
-    cardId.click(cardImg).show().addClass("clicked");
-
-
-    // checking for matches
-   var checkForMatch = function () {
-    console.log(cardsPlayed);
-    if (cardsPlayed[0] === cardsPlayed[1]) {
-        alert("You found a match!");
-    } else {
-        alert("Sorry, try again.");
-    }
-}   ;
+    cardId.click(cardImg).show();
 
     // create fadein and out transistions
     $("body").css("display", "none");
