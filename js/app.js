@@ -4,75 +4,75 @@ $(document).ready(function() {
     // var cards = $('.cards');
     var cards = [
         {
-            theme: "bingo",
+            class: "bingo",
             images: "img/bingo.jpg",
         },
         {
-            theme: "bingo",
+            class: "bingo",
             images: "img/bingo.jpg",
         },
         {
-            theme: "abbiMakeup",
+            class: "abbiMakeup",
             images: "img/abbiMake.jpg",
         },
         {
-            theme: "abbiMakeup",
+            class: "abbiMakeup",
             images: "img/abbiMake.jpg",
         },
         {
-            theme: "garol",
+            class: "garol",
             images: "img/garol.jpg",
         },
         {
-            theme: "garol",
+            class: "garol",
             images: "img/garol.jpg",
         },
         {
-            theme: "ilanaDog",
+            class: "ilanaDog",
             images: "img/ilanaDog.png",
         },
         {
-            theme: "ilanaDog",
+            class: "ilanaDog",
             images: "img/ilanaDog.png",
         },
         {
-            theme: "ilanaWig",
+            class: "ilanaWig",
             images: "img/ilanaWig.jpeg",
         },
         {
-            theme: "ilanaWig",
+            class: "ilanaWig",
             images: "img/ilanaWig.jpeg",
         },
         {
-            theme: "bevers",
+            class: "bevers",
             images: "img/bevers.jpg",
         },
         {
-            theme: "bevers",
+            class: "bevers",
             images: "img/bevers.jpg",
         },
         {
-            theme: "amySedaris",
+            class: "amySedaris",
             images: "img/amySedaris.jpg",
         },
         {
-            theme: "amySedaris",
+            class: "amySedaris",
             images: "img/amySedaris.jpg",
         },
         {
-            theme: "jamie",
+            class: "jamie",
             images: "img/jamie.jpg",
         },
         {
-            theme: "jamie",
+            class: "jamie",
             images: "img/jamie.jpg",
         },
         {
-            theme: "val",
+            class: "val",
             images: "img/val.jpg",
         },
         {
-            theme: "val",
+            class: "val",
             images: "img/val.jpg",
         },
     ];
@@ -101,43 +101,28 @@ $(document).ready(function() {
             //     }
     // };
 
-    var checkForMatch = function () {
-    if ($(this).data("theme") === $(this).data("theme")) {
-        alert("You found a match!");
-    } else {
-        alert("Sorry, try again.");
-    }
-};
+//     var checkForMatch = function () {
+        
+//     if (theme === theme) {
+//         alert("You found a match!");
+//     } else {
+//         alert("Sorry, try again.");
+//     }
+// };
 
     var flipCard = function(){
         var cardId = $(this).data("id");
-        cardsPlayed.push(cards[cardId].theme);
-        var theme = $(this).data("theme");
+        cardsPlayed.push(cards[cardId].class);
         $(this).attr('src', cards[cardId].images);
+        var theme = $(this).data("class");
         if(cardsPlayed.length === 2) {
-        checkForMatch();
-        } if (cardsPlayed.length === 4){
-            checkForMatch();
-        } if (cardsPlayed.length === 6){
-            checkForMatch();
-        } if (cardsPlayed.length === 8){
-            checkForMatch();
-        } if (cardsPlayed.length === 10){
-            checkForMatch();
-        } if (cardsPlayed.length === 12){
-            checkForMatch();
-        } if (cardsPlayed.length === 14){
-            checkForMatch();
-        } if (cardsPlayed.length === 16){
-            checkForMatch();
-        } if (cardsPlayed.length === 18){
-            checkForMatch();
-        } if (cardsPlayed.length === 20){
-            checkForMatch();
-        } if (cardsPlayed.length === 22){
-            checkForMatch();
-        }
-        console.log(theme);
+            if(theme === theme){
+                console.log("match");
+            } else {
+                console.log("nope");
+            }
+    }
+    console.log(theme);
     };
         
 
@@ -145,9 +130,10 @@ $(document).ready(function() {
      for (var i = 0; i < cards.length; i++){
         var cardElement = $('<img>');
         $(cardElement).attr("src", "card.jpg");
-        $(cardElement).data('id', i);
+        $(cardElement).attr('data-id', i);
         $(cardElement).attr('class', 'cards');
         $(cardElement).on('click', flipCard);
+        $(cardElement).attr("data-class", cards[i].class);
         var board = $("#gameContainer");
         board.append(cardElement);
         
