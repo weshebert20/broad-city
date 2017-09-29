@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    var clicks = 0;
+
     var cardsPlayed = [];
-    // var cards = $('.cards');
+
     var cards = [
         {
             class: "bingo",
@@ -77,7 +77,73 @@ $(document).ready(function() {
         },
     ];
 
-    // var match = function(){
+    var flipBack = function(){
+
+    };
+
+
+
+    var flipCard = function(){
+        var cardId = $(this).data("id");
+        cardsPlayed.push(cards[cardId].class);
+        $(this).attr('src', cards[cardId].images);
+        
+        var theme = $(this).data("class");
+        if(cardsPlayed.length === 2) {
+            if(cardsPlayed[0] === cardsPlayed[1]){
+                // give point to player
+                console.log("match");
+            } else {
+                $('img').attr("src", "card.jpg");
+                console.log("nope");
+            }
+        cardsPlayed = [];
+    }
+
+    };
+
+
+    
+
+    var createBoard = function(){
+     for (var i = 0; i < cards.length; i++){
+        var cardElement = $('<img>');
+        $(cardElement).attr("src", "card.jpg");
+        $(cardElement).attr('data-id', i);
+        $(cardElement).attr('class', 'cards');
+        $(cardElement).on('click', flipCard); 
+        $(cardElement).attr("data-class", cards[i].class);
+        var board = $("#gameContainer");
+        board.append(cardElement);    
+     }
+};
+
+    createBoard();
+
+
+
+
+    // create fadein and out transistions
+    $("body").css("display", "none");
+ 
+    $("body").fadeIn(1000);
+ 
+    $("a.transition").click(function(event){
+        event.preventDefault();
+        linkLocation = this.href;
+        $("body").fadeOut(1000, redirectPage);      
+    });
+         
+    function redirectPage() {
+        window.location = linkLocation;
+    }
+
+});
+
+
+
+
+        // var match = function(){
     //          if(cardsPlayed.length === 2){
     //              if (cards[theme] === cards[theme]){
     //             alert("match");  
@@ -109,62 +175,6 @@ $(document).ready(function() {
 //         alert("Sorry, try again.");
 //     }
 // };
-
-    var flipCard = function(){
-        var cardId = $(this).data("id");
-        cardsPlayed.push(cards[cardId].class);
-        $(this).attr('src', cards[cardId].images);
-        var theme = $(this).data("class");
-        if(cardsPlayed.length === 2) {
-            if(theme === theme){
-                console.log("match");
-            } else {
-                console.log("nope");
-            }
-    }
-    console.log(theme);
-    };
-        
-
-    var createBoard = function(){
-     for (var i = 0; i < cards.length; i++){
-        var cardElement = $('<img>');
-        $(cardElement).attr("src", "card.jpg");
-        $(cardElement).attr('data-id', i);
-        $(cardElement).attr('class', 'cards');
-        $(cardElement).on('click', flipCard);
-        $(cardElement).attr("data-class", cards[i].class);
-        var board = $("#gameContainer");
-        board.append(cardElement);
-        
-     }
-};
-
-    createBoard();
-
-
-
-
-    // create fadein and out transistions
-    $("body").css("display", "none");
- 
-    $("body").fadeIn(1000);
- 
-    $("a.transition").click(function(event){
-        event.preventDefault();
-        linkLocation = this.href;
-        $("body").fadeOut(1000, redirectPage);      
-    });
-         
-    function redirectPage() {
-        window.location = linkLocation;
-    }
-
-});
-
-
-
-
 
 
 
