@@ -1,7 +1,11 @@
 $(document).ready(function() {
 
+    // store the card images for comparing
+    var cardsImages = [];
+    // store the cards played for comparing
     var cardsPlayed = [];
 
+    // where all the cards are stored with images
     var cards = [
         {
             class: "bingo",
@@ -77,34 +81,56 @@ $(document).ready(function() {
         },
     ];
 
-    var flipBack = function(){
-
+    var player = function(){
+        $('.score').html("1");
     };
 
 
+    // audio file for when matched
+   var audio = document.getElementsByTagName("audio")[0];
 
-    var flipCard = function(){
-        var cardId = $(this).data("id");
-        cardsPlayed.push(cards[cardId].class);
-        $(this).attr('src', cards[cardId].images);
-        
-        var theme = $(this).data("class");
-        if(cardsPlayed.length === 2) {
+
+   // match check and where cards are flipped back
+    var checkForMatch = function(){
             if(cardsPlayed[0] === cardsPlayed[1]){
+                player();
+                audio.play();
                 // give point to player
-                console.log("match");
             } else {
-                $('img').attr("src", "card.jpg");
+                setTimeout(function (){
+                   $('.intro').attr("src", "card.jpg").removeClass('intro');
+                }, 1000); 
                 console.log("nope");
+
             }
         cardsPlayed = [];
-    }
-
     };
 
 
-    
+    var add = function(){
+            $(this).addClass("intro");
+        };
 
+    // function for flipping cards and checking if enough for match
+    var flipCard = function(){
+        var cardId = $(this).data("id");
+        var cardClass = $(this).data("class");
+        // var cardsinPlay = $(this).attr('src');
+        cardsPlayed.push(cards[cardId].class);
+        cardsImages.push(cards[cardId].images);
+        var image = $(this).attr('src', cards[cardId].images);     
+        
+        if (cardsPlayed.length===2){
+            checkForMatch();
+        }
+        if(cardsImages.length === 3) {
+            $('.intro').removeClass("intro");
+            cardsImages.splice(0,2);
+        }
+    };
+
+    
+    // the function to create the boards
     var createBoard = function(){
      for (var i = 0; i < cards.length; i++){
         var cardElement = $('<img>');
@@ -112,16 +138,25 @@ $(document).ready(function() {
         $(cardElement).attr('data-id', i);
         $(cardElement).attr('class', 'cards');
         $(cardElement).on('click', flipCard); 
+        $(cardElement).on('click', add);
         $(cardElement).attr("data-class", cards[i].class);
         var board = $("#gameContainer");
         board.append(cardElement);    
-     }
-};
+        }
+    };
 
+
+    // sort cards when page loads
+    var reset = cards.sort(function() { return 0.5 - Math.random(); });
+
+
+    // reset board when clicked
+    $('.reset').click(function() {
+    location.reload();
+    });
+
+    // calling the createboard function
     createBoard();
-
-
-
 
     // create fadein and out transistions
     $("body").css("display", "none");
@@ -139,6 +174,11 @@ $(document).ready(function() {
     }
 
 });
+
+
+
+
+
 
 
 

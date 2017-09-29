@@ -185,6 +185,7 @@ p.landing {
 	width: 14%;
 	margin: 1.1%;
 	display: inline-block;
+	border-radius: 5px;
 }
 
 .reset {
