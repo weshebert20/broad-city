@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+    var clicks = [];
+    var clicksMatch = [];
     // store the card images for comparing
     var cardsImages = [];
     // store the cards played for comparing
@@ -80,10 +81,38 @@ $(document).ready(function() {
             images: "img/val.jpg",
         },
     ];
+ 
+    var count = 0;
 
-    var player = function(){
-        $('.score').html("1");
-    };
+  $(".counter").click(function() {
+    count++;
+    });
+
+
+    var count2 = 0;
+
+  var counterFun = $(".counter").click(function(){
+    if (count % 2 === 0){
+        count2++;
+    }
+    if (count2 % 2 === 0){
+       if(cardsPlayed[0] === cardsPlayed[1]){
+         $('#abbiS').html(clicksMatch.length);
+       }  else {
+            clicksMatch.pop(1);
+       }
+    } else if(cards) {
+        if(cardsPlayed[0] === cardsPlayed[1]){
+            $('#ilanaS').html(clicksMatch.length);
+        } else{
+            clicksMatch.pop(1);
+        }
+    } else {
+        clicksMatch.pop(1);
+    }
+  });
+
+
 
 
     // audio file for when matched
@@ -92,21 +121,27 @@ $(document).ready(function() {
 
    // match check and where cards are flipped back
     var checkForMatch = function(){
+
+            // adds clicker for when person gets point
             if(cardsPlayed[0] === cardsPlayed[1]){
-                player();
+                clicksMatch.push(1);
                 audio.play();
+                
                 // give point to player
             } else {
                 setTimeout(function (){
                    $('.intro').attr("src", "card.jpg").removeClass('intro');
-                }, 1000); 
+                }, 700); 
+                
                 console.log("nope");
 
-            }
+            }          
+        // clears array
         cardsPlayed = [];
     };
+    console.log(clicksMatch);
 
-
+    // adds class that I can add and take off so show card/png
     var add = function(){
             $(this).addClass("intro");
         };
@@ -115,11 +150,9 @@ $(document).ready(function() {
     var flipCard = function(){
         var cardId = $(this).data("id");
         var cardClass = $(this).data("class");
-        // var cardsinPlay = $(this).attr('src');
         cardsPlayed.push(cards[cardId].class);
         cardsImages.push(cards[cardId].images);
         var image = $(this).attr('src', cards[cardId].images);     
-        
         if (cardsPlayed.length===2){
             checkForMatch();
         }
@@ -172,7 +205,6 @@ $(document).ready(function() {
     function redirectPage() {
         window.location = linkLocation;
     }
-
 });
 
 
