@@ -1,8 +1,6 @@
 $(document).ready(function() {
     var clicks = 0;
     var cardsPlayed = [];
-    var cardsWon = [];
-    var theme = cardsPlayed;
     // var cards = $('.cards');
     var cards = [
         {
@@ -79,64 +77,87 @@ $(document).ready(function() {
         },
     ];
 
+    // var match = function(){
+    //          if(cardsPlayed.length === 2){
+    //              if (cards[theme] === cards[theme]){
+    //             alert("match");  
+    //             } else {
+    //             console.log("lost");
+    //             }
+            //     }
+            // else if (cardsPlayed.length===4){
+            //     if (themes===themes){
+            //         playerTwo();
+            //     } else {
+            //     console.log("lost");
+            //     }
+            //     }   
+            // else if (cardsPlayed.length===6){
+            //     if (themes===themes){
+            //         playerOne();
+            //     } else {
+            //     console.log("lost");
+            //     }
+            //     }
+    // };
 
-    // create board for gameplay
-    var createBoard = function(){
-     for (let i = 0; i < cards.length; i++){
-        $('#gameContainer').prepend('<img src="card.jpg" class="cards" theme=' + cards[i].theme + ' />');
-     }
+    var checkForMatch = function () {
+    if ($(this).data("theme") === $(this).data("theme")) {
+        alert("You found a match!");
+    } else {
+        alert("Sorry, try again.");
+    }
+};
+
+    var flipCard = function(){
+        var cardId = $(this).data("id");
+        cardsPlayed.push(cards[cardId].theme);
+        var theme = $(this).data("theme");
+        $(this).attr('src', cards[cardId].images);
+        if(cardsPlayed.length === 2) {
+        checkForMatch();
+        } if (cardsPlayed.length === 4){
+            checkForMatch();
+        } if (cardsPlayed.length === 6){
+            checkForMatch();
+        } if (cardsPlayed.length === 8){
+            checkForMatch();
+        } if (cardsPlayed.length === 10){
+            checkForMatch();
+        } if (cardsPlayed.length === 12){
+            checkForMatch();
+        } if (cardsPlayed.length === 14){
+            checkForMatch();
+        } if (cardsPlayed.length === 16){
+            checkForMatch();
+        } if (cardsPlayed.length === 18){
+            checkForMatch();
+        } if (cardsPlayed.length === 20){
+            checkForMatch();
+        } if (cardsPlayed.length === 22){
+            checkForMatch();
+        }
+        console.log(theme);
     };
+        
+
+    var createBoard = function(){
+     for (var i = 0; i < cards.length; i++){
+        var cardElement = $('<img>');
+        $(cardElement).attr("src", "card.jpg");
+        $(cardElement).data('id', i);
+        $(cardElement).attr('class', 'cards');
+        $(cardElement).on('click', flipCard);
+        var board = $("#gameContainer");
+        board.append(cardElement);
+        
+     }
+};
 
     createBoard();
-    
-    var playerOne = function(){
-        $(".abbiScore").html('1');
-    };
-
-    var playerTwo = function(){
-        $(".ilanaScore").html('1');
-    };
 
 
 
-    // flip card 
-
-    var cardId = $('img.cards').each(function(i){
-       var cardClicked =  $(this).click().attr('id', i);
-    });
-
-    // flipping card and inserting image when clicked
-    var cardImg = function(){
-        var cardClikedTwo = $(this).attr('src', cards[this.id].images);
-        cardsPlayed.push(cards[this.id].theme);
-        var themes = $(cardClikedTwo).attr('theme');
-        // cardsWon.push(cards[this.id].theme);
-             if(cardsPlayed.length === 2){
-                 if (themes===themes){
-                playerOne();  
-                } else {
-                console.log("lost");
-                }
-                }
-            else if (cardsPlayed.length===4){
-                if (themes===themes){
-                    playerTwo();
-                } else {
-                console.log("lost");
-                }
-                }   
-            else if (cardsPlayed.length===6){
-                if (themes===themes){
-                    playerOne();
-                } else {
-                console.log("lost");
-                }
-                }
-        console.log(themes);
-    };
-
-    
-    cardId.click(cardImg).show();
 
     // create fadein and out transistions
     $("body").css("display", "none");
@@ -154,3 +175,46 @@ $(document).ready(function() {
     }
 
 });
+
+
+
+
+
+
+
+    // create board for gameplay
+    // var createBoard = function(){
+    //  for (let i = 0; i < cards.length; i++){
+    //     $('#gameContainer').prepend('<img src="card.jpg" class="cards" data-theme=' + cards[i].theme + ' />');
+    //  }
+    // };
+
+    // createBoard();
+    
+    // var playerOne = function(){
+    //     $(".abbiScore").html('1');
+    // };
+
+    // var playerTwo = function(){
+    //     $(".ilanaScore").html('1');
+    // };
+
+
+
+    // flip card 
+
+    // var cardId = $('img.cards').each(function(i){
+    //    var cardClicked =  $(this).click().attr('id', i);
+    // });
+    // flipping card and inserting image when clicked
+
+
+    // var cardImg = function(){
+    //     var cardClikedTwo = $(this).attr('src', cards[this.id].images);
+    //     cardsPlayed.push(cards[this.id].theme);
+       
+    //     console.log(themes);
+    // };
+
+    
+    // cardId.click(cardImg).show();
