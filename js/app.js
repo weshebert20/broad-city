@@ -115,7 +115,7 @@ $(document).ready(function() {
             } else {
                 setTimeout(function (){
                    $('.intro').attr("src", "img/card.jpg").removeClass('intro');
-                }, 700); 
+                }, 500); 
                 clicksNoMatch.push(1);
             }
 
