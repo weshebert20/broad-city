@@ -8,13 +8,18 @@ Player Two = Ilana
 You each take turns flipping two cards to check for a match. Player with the highest score gets a big ole' YAS Kween. Hit restart to play again.
 
 
+## Trello Board
 
 Link to trello board:
 https://trello.com/b/639kxsCB
 
+## Wireframe Landing Page
 
 Landing page:
 ![Screenshot](Landing.jpg)
+
+## Wireframe GamePlay
+
 Game page:
 ![Screenshot](Game.jpg)
 
@@ -28,7 +33,7 @@ My idea was to make the game bright and fun, much like the animation on the show
 
 ## Technology 
 
-### photoshop
+### Photoshop
 
 I used photoshop to edit the photos and size them so both the card.png (the back of card) and the front would match sizes.
 
