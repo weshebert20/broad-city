@@ -118,6 +118,7 @@ p.landing {
 	height: 10%;
 }
 
+/*header title*/
 .reduce {
 	color:#189BCE;
 }
@@ -185,7 +186,7 @@ p.landing {
 	font-family: 'Londrina Solid', cursive;
 	font-size: 40px;
 	margin: 0;
-	color: #FFE83B;
+	color: #FEAB5D;
 }
 
 /*reset button*/
@@ -201,7 +202,8 @@ p.landing {
 	font-family: 'Six Caps', sans-serif;
 	font-size: 30px;
 	color: white;
-	margin-left: 28%;
+	margin-left: 26%;
+	margin-top: 10%;
 }
 
 .reset:hover {
