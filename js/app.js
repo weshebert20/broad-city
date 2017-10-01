@@ -1,11 +1,14 @@
 $(document).ready(function() {
-    var clicks = [];
-    var clicksMatch = [];
+
+    // scoreboard placeholder
+    var clicksMatchAbbi = [];
+    var clicksMatchIlana = [];
+    var clicksNoMatch = [];
+    
     // store the card images for comparing
     var cardsImages = [];
     // store the cards played for comparing
     var cardsPlayed = [];
-
     // where all the cards are stored with images
     var cards = [
         {
@@ -82,69 +85,50 @@ $(document).ready(function() {
         },
     ];
  
-    var count = 0;
+    // creates scoreboard for abbi and ilana to push into the checkformatch function
+    var clickIlana = function(){   
+            clicksMatchIlana.push(1);   
+            $('#ilanaS').html(clicksMatchIlana.length);
+        };
 
-  $(".counter").click(function() {
-    count++;
-    });
-
-
-    var count2 = 0;
-
-  var counterFun = $(".counter").click(function(){
-    if (count % 2 === 0){
-        count2++;
-    }
-    if (count2 % 2 === 0){
-       if(cardsPlayed[0] === cardsPlayed[1]){
-         $('#abbiS').html(clicksMatch.length);
-       }  else {
-            clicksMatch.pop(1);
-       }
-    } else if(cards) {
-        if(cardsPlayed[0] === cardsPlayed[1]){
-            $('#ilanaS').html(clicksMatch.length);
-        } else{
-            clicksMatch.pop(1);
-        }
-    } else {
-        clicksMatch.pop(1);
-    }
-  });
-
-
+    var clickAbbi = function(){  
+            clicksMatchAbbi.push(1);
+            $('#abbiS').html(clicksMatchAbbi.length);
+        };
 
 
     // audio file for when matched
    var audio = document.getElementsByTagName("audio")[0];
-
-
+   
    // match check and where cards are flipped back
     var checkForMatch = function(){
-
             // adds clicker for when person gets point
             if(cardsPlayed[0] === cardsPlayed[1]){
-                clicksMatch.push(1);
+                clicksNoMatch.push(1);
                 audio.play();
-                
-                // give point to player
+                if(clicksNoMatch.length % 2 === 0){
+                clickIlana();
+                }   
+                else {  
+                clickAbbi(); 
+                }
             } else {
                 setTimeout(function (){
                    $('.intro').attr("src", "card.jpg").removeClass('intro');
                 }, 700); 
-                
-                console.log("nope");
+                clicksNoMatch.push(1);
+            }
 
-            }          
         // clears array
         cardsPlayed = [];
     };
-    console.log(clicksMatch);
+
 
     // adds class that I can add and take off so show card/png
     var add = function(){
             $(this).addClass("intro");
         };
+
 
     // function for flipping cards and checking if enough for match
     var flipCard = function(){
@@ -152,7 +136,8 @@ $(document).ready(function() {
         var cardClass = $(this).data("class");
         cardsPlayed.push(cards[cardId].class);
         cardsImages.push(cards[cardId].images);
-        var image = $(this).attr('src', cards[cardId].images);     
+        var image = $(this).attr('src', cards[cardId].images);    
+
         if (cardsPlayed.length===2){
             checkForMatch();
         }
@@ -161,8 +146,8 @@ $(document).ready(function() {
             cardsImages.splice(0,2);
         }
     };
-
     
+
     // the function to create the boards
     var createBoard = function(){
      for (var i = 0; i < cards.length; i++){
@@ -170,7 +155,7 @@ $(document).ready(function() {
         $(cardElement).attr("src", "card.jpg");
         $(cardElement).attr('data-id', i);
         $(cardElement).attr('class', 'cards');
-        $(cardElement).on('click', flipCard); 
+        $(cardElement).on('click', flipCard);  
         $(cardElement).on('click', add);
         $(cardElement).attr("data-class", cards[i].class);
         var board = $("#gameContainer");
@@ -188,8 +173,10 @@ $(document).ready(function() {
     location.reload();
     });
 
+
     // calling the createboard function
     createBoard();
+
 
     // create fadein and out transistions
     $("body").css("display", "none");
