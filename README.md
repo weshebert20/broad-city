@@ -27,9 +27,9 @@ Game page:
 
 ## Idea
 
-I felt when beginning this project I wanted to elaborate on the memory card game we flew through during the prework
+I felt when beginning this project I wanted to elaborate on the memory card game we flew through during the prework.
 
-My idea was to make the game bright and fun, much like the animation on the show, and bring it to the next level with fun animations and adding a second player
+My idea was to make the game bright and fun, much like the animation on the show, and bring it to the next level with fun animations and adding a second player.
 
 ## Technology 
 
@@ -39,7 +39,7 @@ I used photoshop to edit the photos and size them so both the card.png (the back
 
 ### HTML/CSS
 
-I used basic HTML5 and CSS to gice the pages style. CSS was where I could really enhance the game from just a basic memory card game to something more fun and visually pleasing
+I used basic HTML5 and CSS to give the pages style. CSS was where I could really enhance the game from just a basic memory card game to something more fun and visually pleasing. I found some fun fonts that matched the show font and added a fade in feature so each page flowed between clicks. 
 
 ### jQuery
 

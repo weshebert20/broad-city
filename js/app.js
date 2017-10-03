@@ -105,20 +105,23 @@ $(document).ready(function() {
             // adds clicker for when person gets point
             if(cardsPlayed[0] === cardsPlayed[1]){
                 clicksNoMatch.push(1);
+                // playes yas audio
                 audio.play();
+                // if match clicks = even number its ilanas point
                 if(clicksNoMatch.length % 2 === 0){
                 clickIlana();
+                // if match clicks are odd its abbis point
                 }   
                 else {  
                 clickAbbi(); 
                 }
+            // if not a match flip cards back over
             } else {
                 setTimeout(function (){
                    $('.intro').attr("src", "img/card.jpg").removeClass('intro');
                 }, 500); 
                 clicksNoMatch.push(1);
             }
-
         // clears array
         cardsPlayed = [];
     };
