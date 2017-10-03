@@ -114,7 +114,7 @@ $(document).ready(function() {
                 }
             } else {
                 setTimeout(function (){
-                   $('.intro').attr("src", "img/card.jpg").removeClass('intro');
+                   $('.intro').attr("src", "card.jpg").removeClass('intro');
                 }, 500); 
                 clicksNoMatch.push(1);
             }
@@ -152,7 +152,7 @@ $(document).ready(function() {
     var createBoard = function(){
      for (var i = 0; i < cards.length; i++){
         var cardElement = $('<img>');
-        $(cardElement).attr("src", "img/card.jpg");
+        $(cardElement).attr("src", "card.jpg");
         $(cardElement).attr('data-id', i);
         $(cardElement).attr('class', 'cards');
         $(cardElement).on('click', flipCard);  
