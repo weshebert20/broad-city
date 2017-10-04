@@ -1,5 +1,10 @@
 ## Broad City Memory Game
 
+## Play it
+https://weshebert20.github.io/broad-city/
+
+
+
 ### How to play
 Very simple...
 Player One = Abbi
@@ -11,7 +16,7 @@ You each take turns flipping two cards to check for a match. Player with the hig
 ## Trello Board
 
 Link to trello board:
-https://trello.com/b/639kxsCB
+https://trello.com/b/639kxsCBxx
 
 ## Wireframe Landing Page
 
